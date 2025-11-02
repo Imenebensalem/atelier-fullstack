@@ -23,21 +23,23 @@ const ProduitForm = ({ onSubmit, produitInitial }) => {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <form onSubmit={handleSubmit} className="mb-4">
-            <div className="mb-3">
-              <label className="form-label">Nom</label>
-              <input type="text" className="form-control" value={nom} onChange={(e) => setNom(e.target.value)} required />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Description</label>
-              <textarea className="form-control" value={description} onChange={(e) => setDescription(e.target.value)} />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Prix (€)</label>
-              <input type="number" className="form-control" value={prix} onChange={(e) => setPrix(e.target.value)} required />
-            </div>
-            <button type="submit" className="btn btn-primary w-100">Soumettre</button>
-          </form>
+          <div className="form-card">
+            <form onSubmit={handleSubmit} className="mb-4">
+              <div className="mb-3">
+                <label className="form-label">Nom</label>
+                <input type="text" className="form-control" value={nom} onChange={(e) => setNom(e.target.value)} required />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Description</label>
+                <textarea className="form-control" value={description} onChange={(e) => setDescription(e.target.value)} />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Prix (€)</label>
+                <input type="number" className="form-control" value={prix} onChange={(e) => setPrix(e.target.value)} required />
+              </div>
+              <button type="submit" className="btn btn-primary w-100">Soumettre</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

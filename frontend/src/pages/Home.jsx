@@ -32,38 +32,49 @@ const Home = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h1 className="mb-4">Liste des Produits</h1>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Description</th>
-            <th>Prix (€)</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {produits.map((produit) => (
-            <tr key={produit.id}>
-              <td>{produit.nom}</td>
-              <td>{produit.description}</td>
-              <td>{produit.prix}</td>
-              <td>
-                <Link to={`/edit/${produit.id}`} className="btn btn-warning btn-sm me-2">
-                  <FaEdit /> Modifier
-                </Link>
-                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(produit.id)}>
-                  <FaTrash /> Supprimer
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="text-center">
-        <Link to="/add" className="btn btn-success">Ajouter un Produit</Link>
+    <div className="container mt-4 app-container">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h1 className="mb-0">Liste des Produits</h1>
+        <div>
+          <Link to="/add" className="btn btn-primary">Ajouter un Produit</Link>
+        </div>
       </div>
+
+      {produits.length === 0 ? (
+        <div className="text-center">Aucun produit trouvé.</div>
+      ) : (
+        <div className="table-responsive">
+          <table className="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix (€)</th>
+                <th style={{width: '220px'}}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {produits.map((produit) => (
+                <tr key={produit.id}>
+                  <td className="fw-semibold">{produit.nom}</td>
+                  <td className="text-muted" style={{maxWidth: 420}}>{produit.description}</td>
+                  <td className="fw-medium">{produit.prix} €</td>
+                  <td>
+                    <div className="d-flex">
+                      <Link to={`/edit/${produit.id}`} className="btn btn-outline-warning btn-sm me-2">
+                        <FaEdit /> Modifier
+                      </Link>
+                      <button className="btn btn-danger btn-sm" onClick={() => handleDelete(produit.id)}>
+                        <FaTrash /> Supprimer
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };
